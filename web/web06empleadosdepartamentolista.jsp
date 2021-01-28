@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="beanempleadosdept" class="beans.Bean05EmpleadosDepartamento" scope="request"/>
+<jsp:useBean id="bean06" class="beans.Bean06EmpleadosDepartamentoLista" scope="request"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,14 +8,11 @@
     </head>
     <body>
         <h1>Empleados departamento</h1>
-        <form method="post">
-            <select name="selectdept">
-            <%=beanempleadosdept.getEmpleadosDepartamentos()%>
-            </select>
-            <button type="submit">Ver empleados</button>            
-        </form>
+        <ul>
+            <%=bean06.getEmpleadosDepartamentos()%>
+        </ul>
             <%
-            String dato = request.getParameter("selectdept");
+            String dato = request.getParameter("deptno");
             if(dato != null){
             int codigo = Integer.parseInt(dato);            
             %>
@@ -28,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-            <%=beanempleadosdept.getVerEmpleados(codigo)%>
+            <%=bean06.getVerEmpleados(codigo)%>
                 </tbody>
             </table>
             <%
